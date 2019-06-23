@@ -29,9 +29,7 @@
         	background-color:#CCE5FF;
         	
             }
-      .mar{
-        	margin-left:20px;
-        }
+      
       .name{
       	width:1080px;
       	height:1200px;
@@ -51,3 +49,42 @@
 	  	background-color:#E0E0E0;
 	  }
 	  
+.error{
+      color:red;
+	  margin-left:5px;
+      }	
+label.error{
+         
+           }
+		   
+form div {
+  margin-bottom: 10px;
+}
+form label {
+  display: inline-block;
+  width: 100px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

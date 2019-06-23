@@ -20,9 +20,58 @@
 
       <style>
       </style>
-      <script src="desktop//jquery-3.4.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  <script>
+	     $(document).ready(function (){
+		   $("#form1").submit(function(e){
+		      e.preventDefault();
+			 var firstname=$('#firstname').val();
+			 var last_name = $('#last_name').val();
+             var email = $('#email').val();
+             var password = $('#password').val();
+ 
+             $(".error").remove();
+ 
+			  
+			  if(firstname.length < 1){
+			    $("#firstname").after('<span class="error">This field is required</span>');
+				}
+			  if (last_name.length < 1) {
+                 $('#last_name').after('<span class="error">This field is required</span>');
+                   }
+              if (email.length < 1) {
+             $('#email').after('<span class="error">This field is required</span>');
+             } else {
+            var regEx = /^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
+              var validEmail = regEx.test(email);
+              if (!validEmail) {
+             $('#email').after('<span class="error">Enter a valid email</span>');
+               }
+             }
+            if (password.length < 8) {
+             $('#password').after('<span class="error">Password must be at least 8 characters long</span>');
+             }	
+			  
+		   });
+		});
+		$(document).ready(function(){
+		  $('#source').change(function(){
+		  $('#status').prop('disabled',false);
+		   var src=$(this);
+		   if(src.val()==="Uttar Pradesh"){
+		    $('#status').empty().append("<option>Gorakhpur</option>").append("<option>Deoria</option>").append("<option>chauri chaura</option>").append("<option>other cities</option>");
+			}
+			if(src.val()==="Andhra Pradesh"){
+			  $('#status').append("<option>other cities</option>");
+			  }
+			$('#clr').on('click',function(){
+			    $('#status').empty();
+			});  
+		  });
+		});
+	  </script>
    <head>
-   <body style="background-color:black;">
+   <body style="background-color:#EEE8EA;">
     
       <div class="blu">
           
@@ -36,18 +85,53 @@
      <div>
          <p style="color:blue;background-color:#FFFFCC;height:50px;text-align:center;margin-top:5px;margin-right:10px;">Use below form to add Single Employee,For Bulk Employee Addition GOTO Bulk Upload option in Menu..</p>
       </div>  
-      <form action="EmpMng3.html" method="get">
-     <label style="color:white;"> FirstName</label>  <label style="margin-left:350px;color:white;">  LastName</label></br>
-      <input type="text" placeholder="First Name" class="color" style="width:400px;"> <input type="text" placeholder="Last Name" class="color mar" style="width:400px;"></br></br>
-     <label style="color:white;">Email</label><label style="margin-left:390px;color:white;">Password</label></br>
-      <input type="email" placeholder="Email" class="color" style="width:400px;"> <input type="password" placeholder="password" class="color mar" style="width:400px;"></br></br>
-      <label style="color:white;">Address</label></br>
-      <input type="Address" value="1234 main st" class="color" style="width:825px;"> </br></br>
-      <label style="color:white;">Address 2</label></br>
-      <input type="Address" value="Apartment,studio,or floor" class="color" style="width:825px;"> </br></br>
-      <label style="color:white;">City</label><label style="margin-left:400px;color:white;">state</label></br>
-      <input type="text" class="color" style="width:400px;"> <input type="text" class="color mar" style="width:400px;"></br></br>
-        <button type="submit" style="background-color:green;margin-left:370px;">save</button><button type="reset" style="background-color:red;">clear</button>
+      <form id="form1" action="" method="get">
+        <div>
+		<label style=""> First Name:</label>
+        <input type="text" placeholder="First Name" class="color" id="firstname" style="width:300px;">
+		</div>
+		<div>
+	 <label style="">  Last Name:</label>
+       <input type="text" placeholder="Last Name" class="color mar" id="last_name" style="width:300px;">
+	   </div>
+	   <div>
+     <label style="">Email:</label>
+	 <input type="email" placeholder="Email" class="color" id="email" style="width:300px;">
+	 </div>
+	 <div>
+	 <label style="">Password:</label>
+       <input type="password" placeholder="password" class="color mar" id="password" style="width:300px;">
+	  </div>
+	  <div>
+      <label style="">Address:</label>
+      <input type="Address" placeholder="1234 main st" class="color" style="width:300px;"> 
+	  </div>
+	  <div>
+      <label style="">Address 2:</label>
+      <input type="Address" placeholder="Apartment,studio,or floor" class="color" style="width:300px;">
+	  </div>
+	  <div>
+         <label style="">State:</label>
+	       <select class="color" id="source" style="width:300px;">
+	      <option>-- Select--</option>
+	      <option> Uttar Pradesh </option>
+	      <option> Andhra Pradesh </option>
+	      <option> Arunachal Pradesh </option>
+	      <option> Assam </option>
+	      <option> Bihar </option>
+	      <option> Chhattisgarh </option>
+	      <option> other states  </option>
+	       </select>
+	   </div>
+	  <div>
+	    <label style="">City:</label>
+        
+		<select class="color" id="status" style="width:300px;" disabled>
+	      <option>-- Select--</option>
+	       </select>
+	    </div>
+        <button type="submit" style="background-color:green;color:white;margin-left:200px;">submit</button>
+		<button type="reset" style="background-color:red;color:white;" id="clr">clear</button>
         <form>
    </div>
 

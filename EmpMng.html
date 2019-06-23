@@ -16,17 +16,25 @@
         <link rel="stylesheet" href="css/matmix-iconfont.css" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,500italic" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" type="text/css">
-        
+        <!--<script src= "https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
       <style>
       </style>
-      <script src="jquery-3.4.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                <script>
+          $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
+            });
+          });
+          </script>
    <head>
-   <body style="background-color:black;">
+   <body style="background-color:#F5EFF1;">
     
       <div class="blu">
-         <select>
-           <option value="all"></option>
-         <select>  
       </div>
 
          <div style="float:right;" class="name">
@@ -35,12 +43,13 @@
            <div>
               <label>search the option</label></br>
               <form action="" method="get">
-              <input type="search" placeholder="search here">
-              <button>search</button>
+              <input id="myInput" type="text" placeholder="Search..">
+
+              <button disabled>search</button>
               </form>
            </div>
            </br>
-           <table style="width:100%;border:1px solid grey;border-collapse:collapse;text-align:left;margin-right:10px;">
+           <table>
               <tr><th>First Name</th>
                   <th>Input Address</th>
                   <th>Input Address2</th>
@@ -48,6 +57,15 @@
                   <th>Input password</th>
                   <th>Input state</th>
               </tr>
+                <tbody id="myTable">
+                  <tr>
+                      <td>Amit</td>
+                      <td>234</td>
+                      <td>6732</td>
+                      <td>ay@gmail.com</td>
+                      <td>341</td>
+                      <td>U.P</td>
+                  </tr>
               <tr>
                    <td>Jyoti</td>
                    <td>123</td>
@@ -56,7 +74,18 @@
                    <td>123</td>
                    <td>U.P</td>
               </tr>
-           </table>
+              <tr>
+                   <td>Vandana</td>
+                   <td>345</td>
+                   <td>3774</td>
+                   <td>vn@gmail.com</td>
+                   <td>345</td>
+                   <td>U.P</td>
+              </tr>
+             </tbody>
+           </table> 
+
+           <!--<table id="example" class="display" width="100%"></table>-->
 
       </div>
 
@@ -77,5 +106,31 @@
      </div>
     </div> 
       
+      
+     <!-- <script>
+        var dataSet = [
+            [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
+            [ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ],
+            [ "Charde Marshall", "Regional Director", "San Francisco", "6741", "2008/10/16", "$470,600" ],
+            [ "Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675" ]
+        ];
+         $(document).ready( function () {
+    jQuery('#example').DataTable();
+} );
+        // $(document).ready(function() {
+        //   // $.noConflict();
+        //     $('#example').DataTable( {
+        //         data: dataSet,
+        //         columns: [
+        //             { title: "Name" },
+        //             { title: "Position" },
+        //             { title: "Office" },
+        //             { title: "Extn." },
+        //             { title: "Start date" },
+        //             { title: "Salary" }
+        //         ]
+        //     } );
+        // } );
+      </script>-->
    </body>
 </html>
